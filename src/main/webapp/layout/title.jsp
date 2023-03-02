@@ -14,7 +14,6 @@
 %>
 <body>
 	<a href="<%=root%>" style="color: black;">
-	<img alt="" src="........image/title.jpg">
 	JSP&Jquery 미니프로젝트</a>
 </body>
 </html>

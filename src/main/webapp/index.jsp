@@ -34,7 +34,7 @@
 	}
 	
 	div.info{
-	  width: 170px;
+	  width: 180px;
 	  height: 200px;
 	  line-height: 10px;
 	  font-size: 15px;
@@ -42,6 +42,8 @@
 	  left: 20px;
 	  border: 1px solid gray;
 	  border-radius: 20px;
+	  padding-top:50px;
+	  padding-left:10px;
 	}
 	
 	div.main{
