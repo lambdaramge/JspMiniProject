@@ -13,6 +13,7 @@ local.properties
 .settings/
 .loadpath
 .recommenders
+META-INF/*
 
 /classes/
 .classpath
