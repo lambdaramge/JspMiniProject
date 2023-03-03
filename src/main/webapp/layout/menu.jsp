@@ -60,7 +60,7 @@
 							</li>
 						</ul>
 					</li>
-					<li><a href="#">방명록</a></li>
+					<li><a href="index.jsp?main=guest/guestlist.jsp">방명록</a></li>
 					<li class="parent">
 						<a href="#">Board</a>
 						<ul class="sub-menu">

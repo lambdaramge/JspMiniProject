@@ -1,14 +1,15 @@
+<%@page import="data.dao.GuestDao"%>
+<%@page import="data.dto.GuestDto"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<link
-        href="https://fonts.googleapis.com/css2?family=Anton&family=Edu+VIC+WA+NT+Beginner:wght@600&family=Gamja+Flower&family=Single+Day&family=Jua&family=Nanum+Pen+Script&display=swap"
-        rel="stylesheet">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Gaegu&family=Gowun+Batang&family=Nanum+Gothic&family=Noto+Serif+KR:wght@300&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+<title>Insert title here</title>
 
 <script type="text/javascript">
    $(function(){
@@ -35,30 +36,36 @@
         
     }
     </script>
-
-<title>Insert title here</title>
+    
 </head>
 <body>
-   
-   
-   <div>
+
+    <%
+    String num=request.getParameter("num");
+    
+    GuestDao dao=new GuestDao();
+    GuestDto dto=dao.getData(num);
+
+    %>
+    
+    <div>
    <!-- 이미지 미리보기 -->
    <img id="showimg" style="position: absolute; left: 650px; top: 0px; max-width: 200px;">
    
-      <form action="guest/addaction.jsp" method="post" enctype="multipart/form-data">
+      <form action="guest/updateaction.jsp" method="post" enctype="multipart/form-data">
+	    <input type="hidden" value="<%=dto.getNum()%>" name="num" >
          <table style="width: 600px">
          <caption>
          <b>방명록 작성</b>
          <span class="glyphicon glyphicon-camera camera"></span>
          <input type="file" name="photo" id="photo" style="visibility: hidden;"
-          onchange="readURL(this)"> 
-          <!-- 파일 업로드 형식 가리려면 style="visibility: hidden; -->
+          onchange="readURL(this)" value="<%=dto.getPhotoname()%>"> 
          
          </caption>
          
          <tr height="100">
             <td width="500">
-            <textarea style="width: 480px; height: 100px;" class="form-control" name="content" required ></textarea>
+            <textarea style="width: 480px; height: 100px;" class="form-control" name="content" required ><%=dto.getContent() %></textarea>
             </td>
             <td>
             <button type="submit" class="btn btn-default" style="width: 100px; height: 100px;">등록</button>
@@ -67,5 +74,6 @@
          </table>
       </form>
    </div>
+    
 </body>
 </html>
