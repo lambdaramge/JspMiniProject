@@ -30,7 +30,6 @@
 				}
 			
 			})
-			
 		})
 		
 		
@@ -64,6 +63,7 @@
 			var pass=$("#pass").val();
 			var pass2=$("#pass2").val();
 			
+			
 			if (pass == pass2){
 				$("#pass-success").text(" 비밀번호가 일치합니다");
 				$("#pass-success").css("color","green");
@@ -73,10 +73,7 @@
 			}
 		})
 		
-		//email 형식확인
-		$("#email2").keyup(function(){
-			var e=$("")
-		})
+		
 		
 	})
 	
@@ -93,7 +90,6 @@
 		}
 	}
 	
-
 	
 
 </script>
@@ -102,7 +98,7 @@
 </head>
 <body>
   <form action="member/addaction.jsp" method="post" class="form-inline"
-  	onsubmit="return passCheck(this)">
+  	onsubmit="return passCheck(this) return passChecks()">
   	<table class="table table-bordered" style="width: 80%;">
   	  <tr>
   	  	<th width='100' bgcolor="lightyellow">ID</th>

@@ -21,6 +21,12 @@
 	<%
 	  //프로젝트 경로구하기
 	  String root=request.getContextPath();
+	
+	  //아이디
+	  String myId=(String)session.getAttribute("myId");
+	  
+	  //로그인 여부 
+	  String loginOk=(String)session.getAttribute("loginOk");
 	%>
 	
 	
@@ -35,9 +41,15 @@
 					<li class="parent">
 						<a href="#">Member</a>
 						<ul class="sub-menu">
-							<li><a href="<%=root%>/index.jsp?main=login/loginmain.jsp"><i class="icon-wrench"></i> 로그인</a></li>
-							<li><a href="<%=root%>/index.jsp?main=member/addform.jsp"><i class="icon-credit-card"></i>가입</a></li>
-							<li><a href="<%=root%>/index.jsp?main=member/memberlist.jsp"><i class="icon-gift"></i> 회원목록</a></li>
+							<li><a href="<%=root%>/index.jsp?main=member/addform.jsp"><i class="icon-credit-card"></i>회원가입</a></li>
+							<li><a href="index.jsp?main=member/myinfo.jsp"><i class="icon-credit-card"></i>나의정보</a></li>
+							
+							<%
+							  //회원목록 로그인 중 + 그 아이디가 admin 이면 
+							  if(loginOk!=null && myId.equals("admin")){%>
+								<li><a href="<%=root%>/index.jsp?main=member/memberlist.jsp"><i class="icon-gift"></i> 회원목록</a></li>							  
+							 <% }
+							%>
 							<li>
 								<ul class="sub-menu">
 									<li><a href="#">Left Sidebar</a></li>

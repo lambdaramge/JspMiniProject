@@ -9,6 +9,16 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<%
+	//세션된 저장된 loginok가 yes이면 로그인 상태 확인
+	String loginOk=(String)session.getAttribute("loginOk");
 	
+	if(loginOk==null){%>
+		<jsp:include page="loginform.jsp"/>
+	<%} else{%>
+		<jsp:include page="logoutform.jsp"/>
+	<%}
+	
+	%>
 </body>
 </html>

@@ -14,6 +14,24 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
 <title>Insert title here</title>
+
+<style type="text/css">
+
+ th,td{
+   text-align: center;
+ }
+</style>
+
+<script type="text/javascript">
+
+	function delfunc(num){
+		var yes=confirm("정말 강퇴처리 하시겠습니까?");
+		
+		if(yes)
+	         location.href='member/memberdelete.jsp?num='+num;
+	   }
+</script>
+
 </head>
 <body>
 	<%
@@ -51,7 +69,7 @@
 				<td><%=sdf.format(dto.getGaipday()) %></td>
 				<td>
 				<button type="button" id="btn" class="btn btn-default btn-xs" 
-				onclick="location.href='index.jsp?main=member/memberdelete.jsp?num=<%=dto.getNum()%>'">삭제</button>
+				onclick="delfunc(<%=dto.getNum()%>)">삭제</button>
 				</td>
 			</tr>
 
