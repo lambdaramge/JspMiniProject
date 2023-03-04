@@ -43,7 +43,6 @@
   		//dto에 저장
   		GuestDto dto=new GuestDto();
   		dto.setNum(num);
-  		dto.setMyid(id);
   		dto.setContent(content);
   		dto.setPhotoname(photoname);
   		

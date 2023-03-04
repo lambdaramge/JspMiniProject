@@ -50,7 +50,7 @@
     
     <div>
    <!-- 이미지 미리보기 -->
-   <img id="showimg" style="position: absolute; left: 650px; top: 0px; max-width: 200px;">
+   <img id="showimg" src="save/<%=dto.getPhotoname() %>" style="position: absolute; left: 650px; top: 0px; max-width: 200px;">
    
       <form action="guest/updateaction.jsp" method="post" enctype="multipart/form-data">
 	    <input type="hidden" value="<%=dto.getNum()%>" name="num" >
@@ -59,7 +59,7 @@
          <b>방명록 작성</b>
          <span class="glyphicon glyphicon-camera camera"></span>
          <input type="file" name="photo" id="photo" style="visibility: hidden;"
-          onchange="readURL(this)" value="<%=dto.getPhotoname()%>"> 
+          onchange="readURL(this)">
          
          </caption>
          
