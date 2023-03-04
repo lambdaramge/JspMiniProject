@@ -34,25 +34,50 @@
 			if(loginOk!=null && dto.getId().equals(myId)){%>
 				
 				<div>
-				  
+				  <input name="num" num="<%=dto.getNum() %>" value="<%=dto.getNum()%>" type="hidden">
+				  <table class="table" style="width: 300px; margin-left: 100px; margin-top: 30px;" >
+				    <tr>
+				      <td>이름</td><td><%=dto.getName() %></td>
+					</tr>
+					<tr>
+				      <td>아이디</td><td><%=dto.getId() %></td>					
+					</tr>
+					<tr>
+				      <td>번호</td><td><%=dto.getHp() %></td>					
+					</tr>
+					<tr>
+				      <td>주소</td><td><%=dto.getAddr() %></td>
+					</tr>
+					<tr>					
+				      <td>이메일</td><td><%=dto.getEmail() %></td>
+					</tr>
+					<tr>
+				      <td>가입일</td><td><%=sdf.format(dto.getGaipday())%></td>
+					</tr>
+				    <tr>
+						<td colspan="2">
+						<button type="button" id="btn" class="btn btn-default btn-xs" 
+						onclick="location.href='index.jsp?main=member/updateform.jsp?num=<%=dto.getNum()%>'">수정</button>
+						<button type="button" id="btn" class="btn btn-default btn-xs" 
+						onclick="delfunc(<%=dto.getNum()%>)">탈퇴</button>
+						
+						<script type="text/javascript">
+						  function delfunc(num) {
+							var yes=confirm("정말 탈퇴하시겠습니까?");
+							
+							if(yes)
+								location.href="member/mydelete.jsp?num="+num;
+							
+						}
+						
+						</script>
+						</td>				    
+				    </tr>
+				    
+				  </table>
 				</div>
-				<tr>
-				<td><%=dto.getName() %></td>
-				<td><%=dto.getId() %></td>
-				<td><%=dto.getHp() %></td>
-				<td><%=dto.getAddr() %></td>
-				<td><%=dto.getEmail() %></td>
-				<td><%=sdf.format(dto.getGaipday()) %></td>
-				<td>
-				<button type="button" id="btn" class="btn btn-default btn-xs" 
-				onclick="delfunc(<%=dto.getNum()%>)">탈퇴</button>
-				<button type="button" id="btn" class="btn btn-default btn-xs" 
-				onclick="delfunc(<%=dto.getNum()%>)">수정</button>
-				</td>
-			</tr>
+						
 			<%}
-			
-			
 		}
 		%>
 </body>

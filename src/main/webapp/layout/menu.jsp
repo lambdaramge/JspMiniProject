@@ -42,7 +42,12 @@
 						<a href="#">Member</a>
 						<ul class="sub-menu">
 							<li><a href="<%=root%>/index.jsp?main=member/addform.jsp"><i class="icon-credit-card"></i>회원가입</a></li>
-							<li><a href="index.jsp?main=member/myinfo.jsp"><i class="icon-credit-card"></i>나의정보</a></li>
+							<%
+							if(loginOk!=null){%>
+  							  <li><a href="index.jsp?main=member/myinfo.jsp"><i class="icon-credit-card"></i>나의정보</a></li>
+								
+							<%}
+							%>
 							
 							<%
 							  //회원목록 로그인 중 + 그 아이디가 admin 이면 
