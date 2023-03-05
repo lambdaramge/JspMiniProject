@@ -55,14 +55,7 @@
 								<li><a href="<%=root%>/index.jsp?main=member/memberlist.jsp"><i class="icon-gift"></i> 회원목록</a></li>							  
 							 <% }
 							%>
-							<li>
-								<ul class="sub-menu">
-									<li><a href="#">Left Sidebar</a></li>
-									<li><a href="#">Full Width</a></li>
-									<li><a href="#">Right Sidebar</a></li>
-									<li><a href="#">Double Sidebar</a></li>
-								</ul>
-							</li>
+						
 						</ul>
 					</li>
 					<li><a href="index.jsp?main=guest/guestlist.jsp">방명록</a></li>
@@ -82,13 +75,5 @@
 	</header>	
 </div> 
 
-
-	<%-- <a href="<%=root%>/index.jsp">메인</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="<%=root%>/index.jsp?main=loginmain.jsp">로그인</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="<%=root%>/index.jsp?main=member/addform.jsp">회원가입</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="<%=root%>/index.jsp?main=guest/guestlist.jsp">방명록</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="<%=root%>/index.jsp?main=board/boardlist.jsp">Q&A</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="#">스마트게시판</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<a href="#">상품등록</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; --%>
 </body>
 </html>

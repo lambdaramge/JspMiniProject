@@ -23,6 +23,7 @@
 	  font-size: 25px;
 	  top:50px;
 	  text-align: center;
+	  padding-left: 300px;
 	}
 	
 	div.menu{

@@ -8,6 +8,15 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
 <title>Insert title here</title>
+
+<style type="text/css">
+  a{
+    color: black;
+  }
+  
+  
+</style>
+
 </head>
 <%
   //프로젝트 경로구하기
@@ -30,8 +39,10 @@
 	  
 	  //로그아웃 상태
 	  if(loginOk==null){%>
-		<button type="button" class="btn btn-default btn-sm" style="width: 70px;"
-		 onclick="location.href='index.jsp?main=login/loginmain.jsp'">login</button>  
+		<a style="text-decoration: none; color:black; font-size: 13px;" 
+		 href="index.jsp?main=login/loginmain.jsp">로그인</a>
+		<a style="text-decoration: none; color:black; font-size: 13px;" 
+		 href="index.jsp?main=member/addform.jsp">회원가입</a>   
 	
 	 <% //로그인 상태
 	 }else{%>

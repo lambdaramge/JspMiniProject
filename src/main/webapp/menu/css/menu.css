@@ -11,7 +11,7 @@ body {
 }
 
 a {
-	color: #23dbdb;
+	color:yellow;
 	text-decoration: none;
 }
 
@@ -100,7 +100,7 @@ ol, ul {
 
 #main-menu > li:hover > a,
 #main-menu > li.current-menu-item > a {
-	color: #23dbdb;
+	color:yellow;
 }
 
 /* HEADER > MENU > DROPDOWN */
@@ -142,7 +142,7 @@ ul.sub-menu > li > a:hover {
 }
 
 ul.sub-menu > li:first-child {
-	border-top: 3px solid #23dbdb;
+	border-top: 3px solid yellow;
 }
 
 ul.sub-menu ul.sub-menu > li:first-child {
