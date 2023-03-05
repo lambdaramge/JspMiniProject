@@ -1,3 +1,5 @@
+<%@page import="data.dao.GuestDao"%>
+<%@page import="data.dto.GuestDto"%>
 <%@page import="data.dto.MemberDto"%>
 <%@page import="java.text.SimpleDateFormat"%>
 <%@page import="java.util.List"%>
@@ -23,6 +25,7 @@
 	//세션
 	String loginOk=(String)session.getAttribute("loginOk");
 	String myId=(String)session.getAttribute("myId");
+	
 	%>
 	
 	  <%
@@ -54,6 +57,18 @@
 					<tr>
 				      <td>가입일</td><td><%=sdf.format(dto.getGaipday())%></td>
 					</tr>
+					<tr>
+					
+					
+					<!-- 내가 쓴 방명록 -->
+					<%
+						GuestDao gdao=new GuestDao();
+						List<GuestDto> contents=gdao.getMyContent(myId);
+						int totalMyCount=gdao.getMyCount(myId);
+					%>
+					  <td>나의 방명록</td><td>총 <a href="index.jsp?main=member/mycontent.jsp"><%=totalMyCount %>개의 글</a>이 있습니다.</td>
+					</tr>
+					
 				    <tr>
 						<td colspan="2">
 						<button type="button" id="btn" class="btn btn-default btn-xs" 
@@ -80,5 +95,6 @@
 			<%}
 		}
 		%>
+		
 </body>
 </html>

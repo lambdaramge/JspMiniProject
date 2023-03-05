@@ -186,4 +186,70 @@ public class GuestDao {
 			db.dbClose(pstmt, conn);
 		}
 	}
+	
+	//내가 쓴 글 개수
+	public int getMyCount(String id) {
+		int n=0;
+		
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select count(*) from guest where myid=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				n=rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+		
+		return n;
+	}
+	
+	//내가쓴 글 불러오기
+	public List<GuestDto> getMyContent(String id){
+		
+		List<GuestDto> list=new ArrayList<GuestDto>();
+		
+		Connection conn=db.getConnection();
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		
+		String sql="select * from guest where myid=?";
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			rs=pstmt.executeQuery();
+			
+			while(rs.next()) {
+				GuestDto dto=new GuestDto();
+				dto.setNum(rs.getString("num"));
+				dto.setMyid(rs.getString("myid"));
+				dto.setContent(rs.getString("content"));
+				dto.setPhotoname(rs.getString("photoname"));
+				dto.setChu(rs.getInt("chu"));
+				dto.setWriteday(rs.getTimestamp("writeday"));
+				
+				list.add(dto);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			db.dbClose(rs, pstmt, conn);
+		}
+				
+		return list;
+	}
 }
