@@ -24,7 +24,5 @@
     SmartDao dao=new SmartDao();
     dao.updateSmartBoard(dto);
     
-    int maxnum=dao.getMaxNum();
-    
-    response.sendRedirect("../index.jsp?main=board/detailview.jsp?num="+maxnum+"&currentPage=1");
+    response.sendRedirect("../index.jsp?main=board/detailview.jsp?num="+num+"&currentPage="+currentPage);
     %>

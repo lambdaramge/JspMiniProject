@@ -37,7 +37,8 @@ response.sendRedirect("");
 	<table class="table table-bordered" style="width: 800px;margin-left: 100px;">
 	
 	<!-- hidden -->
-	<input type="hidden" value="<%=dto.getNum()%>" name="num">
+	<input type="hidden" value="<%=num%>" name="num">
+	<input type="hidden" value="<%=currentPage%>" name="currentPage">
 	
 		<caption><h3>스마트 포토 게시판</h3></caption>
 		<tr>

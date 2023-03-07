@@ -21,6 +21,47 @@
 
 </style>
 
+<script type="text/javascript">
+
+	$(function(){
+		
+		//전체 체크 클릭시 체크값 얻어서 모든 체크값에 전달
+		$(".alldelcheck").click(function(){
+			var chk=$(this).is(":checked");
+			//alert(chk);
+			
+			//전체체크값을 글 앞의 체크에 일괄 전달
+			$(".alldel").prop("checked",chk);
+		})
+		
+		//삭제버튼 클릭시 삭제
+		$("#btndel").click(function(){
+			
+			//체크된 길이
+			var len=$(".alldel:checked").length;
+			//alert(len)
+			
+			if(len==0) alert("최소 한 개 이상의 글을 선택해주세요");
+			else {
+				var a=confirm(len+"개의 글을 삭제하려면 [확인]을 눌러주세요.");
+				//체크된 곳의 value(num)얻어야함
+
+   				var n="";
+				$(".alldel:checked").each(function(idx){
+					n+=$(this).val()+",";
+				})
+				
+				n=n.substring(0, n.length-1);
+				//alert(n);
+				
+				//삭제파일로 전송
+				location.href="board/alldelete.jsp?nums="+n;
+			}
+		})
+	})
+
+</script>
+
 </head>
 <body>
 	<%
