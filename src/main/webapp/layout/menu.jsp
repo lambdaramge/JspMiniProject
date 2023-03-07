@@ -63,7 +63,7 @@
 						<a href="#">Board</a>
 						<ul class="sub-menu">
 							<li><a href="#">Q&A</a></li>
-							<li><a href="#">upload</a></li>
+							<li><a href="index.jsp?main=board/boardlist.jsp">upload</a></li>
 							<li><a href="index.jsp?main=board/smartform.jsp">스마트게시판</a></li>
 						</ul>
 					</li>
