@@ -62,9 +62,9 @@
 					<li class="parent">
 						<a href="#">Board</a>
 						<ul class="sub-menu">
-							<li><a href="<%=root%>/index.jsp?main=board/boardlist.jsp">Q&A</a></li>
+							<li><a href="#">Q&A</a></li>
 							<li><a href="#">upload</a></li>
-							<li><a href="#">스마트게시판</a></li>
+							<li><a href="index.jsp?main=board/smartform.jsp">스마트게시판</a></li>
 						</ul>
 					</li>
 					<li><a href="#">Shop</a></li>
