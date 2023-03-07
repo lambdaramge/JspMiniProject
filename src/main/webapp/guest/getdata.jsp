@@ -42,6 +42,7 @@
 
     <%
     String num=request.getParameter("num");
+    String currentPage=request.getParameter("currentPage");
     
     GuestDao dao=new GuestDao();
     GuestDto dto=dao.getData(num);
@@ -50,10 +51,12 @@
     
     <div>
    <!-- 이미지 미리보기 -->
-   <img id="showimg" src="save/<%=dto.getPhotoname() %>" style="position: absolute; left: 650px; top: 0px; max-width: 200px;">
+   <img id="showimg" src="<%=dto.getPhotoname()==null?"":"save/"+dto.getPhotoname()%>" style="position: absolute; left: 650px; top: 0px; max-width: 200px;">
    
       <form action="guest/updateaction.jsp" method="post" enctype="multipart/form-data">
-	    <input type="hidden" value="<%=dto.getNum()%>" name="num" >
+	    <input type="hidden" value="<%=num%>" name="num" >
+	    <input type="hidden" value="<%=currentPage%>" name="currentPage" >
+	    
          <table style="width: 600px">
          <caption>
          <b>방명록 작성</b>

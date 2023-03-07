@@ -7,20 +7,6 @@
 
     
     <%
-    /* String num=request.getParameter("num");
-    String content=request.getParameter("content");
-    String p=request.getParameter("photo");    
-
-    GuestDto dto=new GuestDto();
-    
-    dto.setNum(num);
-    dto.setContent(content);
-	dto.setPhotoname(p);    
-    
-    GuestDao dao=new GuestDao();
-    dao.updateGuest(dto);
-    
-    response.sendRedirect("../index.jsp?main=guest/guestlist.jsp"); */
     
   //세션에 저장한 id 
   	String id=(String)session.getAttribute("myId");
@@ -38,20 +24,27 @@
   		//multi 변수로 모든 폼데이터 읽어오기
   		String num=multi.getParameter("num");
   		String content=multi.getParameter("content");
-  		String photoname=multi.getFilesystemName("photo"); //실제업로드된 파일명
+  		String photoname=multi.getFilesystemName("photo");
+  		//현재 페이지 번호
+  		String currentPage=multi.getParameter("currentPage");
+  		
+  		//사진 수정 안하면 이전의 값 유지하기
+  		GuestDao dao=new GuestDao();
+  		//기존의 포토명 가져오기
+  		String gu_photoname=dao.getData(num).getPhotoname();
+		
   		
   		//dto에 저장
   		GuestDto dto=new GuestDto();
   		dto.setNum(num);
   		dto.setContent(content);
-  		dto.setPhotoname(photoname);
+  		dto.setPhotoname(photoname==null?gu_photoname:photoname); //현재 사진 없으면 이전 사진 넣기
   		
   		//update
-  		GuestDao dao=new GuestDao();
   		dao.updateGuest(dto);
   		
   		//방명록 목록으로 이동
-  		response.sendRedirect("../index.jsp?main=guest/guestlist.jsp");
+  		response.sendRedirect("../index.jsp?main=guest/guestlist.jsp?currentPage="+currentPage);
   	} catch (Exception e){
   		System.out.print("업로드 오류:"+e.getMessage());
   	}
