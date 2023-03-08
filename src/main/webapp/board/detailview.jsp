@@ -10,7 +10,19 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Gaegu&family=Gowun+Batang&family=Nanum+Gothic&family=Noto+Serif+KR:wght@300&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.3.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <title>Insert title here</title>
+
+<style type="text/css">
+
+  .aday{
+    color: gray;
+    float: right;
+  }
+
+</style>
+
+
 </head>
 
 <script type="text/javascript">
@@ -18,7 +30,7 @@
   $(function(){
 	  
 	  //시작시 리스트 호출
-
+	  list();
 	  
 	  //insert
 	  $("#btnanswer").click(function(){
@@ -36,22 +48,110 @@
 			  success: function(res){
 				  $("#nickname").val("");
 				  $("#content").val("");
+				  
+				  list();
 			  }
 		  
 		  })
 		  
 	  })
 	  
+	  //삭제
+	  $(document).on("click",".adel",function(){
+		  
+		  var a=confirm("진짜 삭제할건가요???????????????????????????????????????");
+
+		  if(a){
+			  setTimeout(() => {
+				
+			  var b=confirm("다시한번 생각해보세요.");
+			  
+			  if(b){
+				  var c=confirm("마지막 기회를 드릴게요");
+				  
+				  if(c){
+					  
+			  var idx=$(this).attr("idx");
+			  $.ajax({
+			  type:"get",
+			  url:"smartanswer/deleteanswer.jsp",
+			  dataType:"html",
+			  data:{"idx":idx},
+			  success: function(res){
+				  alert("삭제성공");
+				  list();
+			  }
+			  
+		  })}}
+			}, 500);
+			  }
+	  })
+	  
+	  //수정 모달 띄우기
+	  $(document).on("click",".amod",function(){
+		  idx=$(this).attr("idx"); //전역변수로 해야 아래 모달 창에서 수정이 된다!!주의
+		  //alert(idx);
+		  
+		  $.ajax({
+			  
+			  type:"get",
+			  url:"smartanswer/jsonupdateform.jsp",
+			  dataType:"json",
+			  data:{"idx":idx},
+			  success:function(res){
+				  $("#unickname").val(res.nickname);
+				  $("#ucontent").val(res.content);
+			  }
+		  
+		  })
+		  
+		  $("#myModal").modal();
+		  
+	  })
+	  
+	  //수정
+	  $(document).on("click","#btn-update",function(){
+		  //alert(idx);
+		  var nickname=$("#unickname").val();
+		  var content=$("#ucontent").val();
+		  
+		  $.ajax({
+		  	  type:"post",
+			  url:"smartanswer/updateanswer.jsp",
+			  dataType:"html",
+			  data:{"idx":idx,"nickname":nickname,"content":content},
+			  success: function(res){
+				  list();
+			  }
+		})
+	  })
+	  
   })
   
   //list 사용자 정의함수
-  function list(){
+   function list(){
+	  
 	  $.ajax({
 		  type:"get",
-		  url:"smartanswer/.jsp",
+		  url:"smartanswer/listanswer.jsp",
 		  dataType:"json",
+		  data:{"num":$("#num").val()},
 		  success:function(res){
-			  $.each(res).
+			  
+			  //댓글개수 출력
+			  $("b.acount>span").html(res.length);
+			  
+			  var s="";
+			  $.each(res,function(i,elt){
+				  s+="<div>";
+				  s+=elt.nickname+":"+elt.content;
+				  s+="<span class='aday'>"+elt.writeday+"</span>";
+				  s+="<button type='button' idx="+elt.idx+" class='amod btn btn-xs btn-default'>수정</button>";
+				  s+="<button type='button' idx="+elt.idx+" class='adel btn btn-xs btn-default'>삭제</button>";
+				  s+="</div>";
+			  })
+			  $(".alist").html(s);
+			  
 		  }
 	  })
   }
@@ -145,5 +245,30 @@
        </tr>
 	  </table>
 	</div>
+	
+	<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">댓글 수정</h4>
+        </div>
+        <div class="modal-body">
+          <b>닉네임: </b>
+          <input type="text" id="unickname" style="width: 100px;">
+          <b>내용: </b>
+          <input type="text" id="ucontent" style="width: 200px;">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal" id="btn-update">수정</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+  
 </body>
 </html>

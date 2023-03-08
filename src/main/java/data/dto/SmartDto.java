@@ -11,6 +11,14 @@ public class SmartDto {
 	private String readcount;
 	private Timestamp writeday;
 	
+	private int answercount; //댓글 개수
+	
+	public int getAnswercount() {
+		return answercount;
+	}
+	public void setAnswercount(int answercount) {
+		this.answercount = answercount;
+	}
 	public String getNum() {
 		return num;
 	}
