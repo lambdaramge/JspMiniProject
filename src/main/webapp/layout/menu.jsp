@@ -67,7 +67,22 @@
 							<li><a href="index.jsp?main=board/smartform.jsp">스마트게시판</a></li>
 						</ul>
 					</li>
-					<li><a href="#">Shop</a></li>
+					<li>
+					<a href="#">Shop</a>
+						<ul class="sub-menu">
+						
+						  <%
+						    if(loginOk!=null && myId.equals("admin")){%>
+							  <li><a href="index.jsp?main=shop/addform.jsp">상품등록</a></li>
+						    	
+						   <% }else{%>
+							  <li><a href="index.jsp?main=shop/shoplist.jsp">상품목록</a></li>
+							   
+						   <%}
+						  %>
+						
+						</ul>
+					</li>
 				</ul>
 			</nav>
 			<div class="clear"></div>
