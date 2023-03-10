@@ -262,4 +262,36 @@ public class MemberDao {
 				db.dbClose(pstmt, conn);
 			}
 	 }
+	    
+     //id에 따른 num값을 리턴
+    public String getNum(String id) {
+       
+       String num="";
+       
+       Connection conn=db.getConnection();
+       PreparedStatement pstmt=null;
+       ResultSet rs=null;
+       
+       String sql="select num from member where id=?";
+       //select * from member where id=? 로 해도 되는데 num값만 필요하니까 *대신 걍 num만 조회헤줌
+       
+       try {
+          pstmt=conn.prepareStatement(sql);
+          pstmt.setString(1, id);
+          rs=pstmt.executeQuery();
+          
+          //id만 조회하면 되니까 if문 사용
+          if(rs.next())
+             num=rs.getString("num");
+          
+       } catch (SQLException e) {
+          // TODO Auto-generated catch block
+          e.printStackTrace();
+       }finally {
+          db.dbClose(rs, pstmt, conn);
+       }
+       
+       return num;
+    }
+
 }

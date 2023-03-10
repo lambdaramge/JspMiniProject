@@ -19,27 +19,11 @@
 	
 	ShopDao dao=new ShopDao();
 	List<ShopDto> list=dao.getAllSangpums();
-	
-	for(ShopDto dto:list){%>
-		<span>카테고리<%=dto.getCategory() %></span>
-	<%}
+
 	%>
 	
 <body>
 
- <!--  <div id="tabs">
-    <a href="#tabs-1">전체</a>
-    <a href="#tabs-2">피규어</a>
-    <a href="#tabs-3">의상</a>
-    <a href="#tabs-4">선물세트</a>
-    <a href="#tabs-5">악세서리</a>
-    <a href="#tabs-6">게임</a>
-  </div>
-  
-  <div id="tabs-1">
-  
-  </div> -->
-  
  <ul class="nav nav-tabs">
     <li class="active"><a data-toggle="tab" href="#home">전체</a></li>
     <li><a data-toggle="tab" href="#menu1">피규어</a></li>
@@ -67,7 +51,7 @@
         	  %>
           	  
 	          <td>
-	            <a><img src="shopsave/<%=photo%>" class="photo" style="max-width: 100px;">
+	            <a href="index.jsp?main=shop/detailpage.jsp?shopnum=<%=dto.getShopnum()%>"><img src="shopsave/<%=photo%>" class="photo" style="max-width: 100px;">
 	            <br>
 	            <%=dto.getSangpum() %>
 	            <b style="color: red;"><%=sale %>%</b>

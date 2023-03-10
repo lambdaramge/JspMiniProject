@@ -10,4 +10,36 @@ public class CartDto {
 	private String cnt;
 	private Timestamp cartday;
 	
+	public String getIdx() {
+		return idx;
+	}
+	public void setIdx(String idx) {
+		this.idx = idx;
+	}
+	public String getShopnum() {
+		return shopnum;
+	}
+	public void setShopnum(String shopnum) {
+		this.shopnum = shopnum;
+	}
+	public String getNum() {
+		return num;
+	}
+	public void setNum(String num) {
+		this.num = num;
+	}
+	public String getCnt() {
+		return cnt;
+	}
+	public void setCnt(String cnt) {
+		this.cnt = cnt;
+	}
+	public Timestamp getCartday() {
+		return cartday;
+	}
+	public void setCartday(Timestamp cartday) {
+		this.cartday = cartday;
+	}
+	
+	
 }

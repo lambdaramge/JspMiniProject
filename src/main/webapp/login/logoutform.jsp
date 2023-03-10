@@ -1,3 +1,4 @@
+<%@page import="data.dao.ShopDao"%>
 <%@page import="data.dao.MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
@@ -29,6 +30,8 @@
 		<h2><%=name %>님 안녕하세요</h2>
 		<br>
 		<button type="button" class="btn btn-default" onclick="location.href='login/logoutaction.jsp'">로그아웃</button>
+		
+		
 	</div>
 	
 </body>
